@@ -4,6 +4,210 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PAREAi Onboarding — Step 1</title>
+  <style>
+  /* ===== Base ===== */
+  body {
+    background: #2d2d2d;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 24px;
+    background: #fff;
+    border: 4px solid #9fa6a0;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(159,166,160,0.4);
+  }
+
+  /* ===== Headers ===== */
+  h1, h2, h3, h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: #47584e;
+    letter-spacing: 0.5px;
+  }
+
+  h1 { font-size: 38px; margin-bottom: 10px; }
+  h2 { font-size: 26px; margin-bottom: 8px; display: flex; align-items: center; }
+  p { font-size: 17px; color: #000; margin-bottom: 24px; line-height: 1.5; }
+
+  /* ===== Progress Bar ===== */
+  .progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    color: #9fa6a0;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+
+  .progress-labels span.active {
+    color: #c1a875;
+    font-weight: 600;
+  }
+
+  .progress {
+    background: rgba(0,0,0,0.05);
+    border-radius: 20px;
+    height: 12px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .progress-fill {
+    background: #c1a875;
+    height: 100%;
+    width: 66%;
+    box-shadow: 0 0 12px #c1a875;
+    transition: width 0.4s ease;
+  }
+
+  /* ===== Cards / Sections ===== */
+  details, .subcard {
+    background: #fff;
+    border: 4px solid #9fa6a0;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 15px rgba(159,166,160,0.3);
+    transition: all 0.3s ease;
+  }
+
+  details[open] {
+    box-shadow: 0 0 25px rgba(193,168,117,0.45);
+  }
+
+  summary {
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: #47584e;
+    outline: none;
+  }
+
+  label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: #47584e;
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 12px;
+  }
+
+  /* ===== Inputs ===== */
+  input, select, textarea {
+    width: 92%;
+    margin-left: 4%;
+    padding: 14px;
+    border: 2px solid #9fa6a0;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.8);
+    color: #000;
+    font-size: 16px;
+    margin-bottom: 18px;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: #c1a875;
+    box-shadow: 0 0 8px rgba(193,168,117,0.6);
+    outline: none;
+  }
+
+  textarea { min-height: 80px; }
+
+  input[type="checkbox"] {
+    accent-color: #c1a875;
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    filter: drop-shadow(0 0 4px #c1a875);
+    vertical-align: middle;
+    transform: translateY(-2px);
+  }
+
+  .check {
+    color: #c1a875;
+    margin-right: 8px;
+  }
+
+  /* ===== Buttons ===== */
+  button {
+    background: #9fa6a0;
+    color: #fff;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background: #000;
+    color: #9fa6a0;
+    border: 2px solid #9fa6a0;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(193,168,117,0.4);
+  }
+
+  .spinner {
+    display: none;
+    margin-left: 10px;
+    border: 2px solid #fff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ===== Phone Input Group ===== */
+  .phone-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .prefix {
+    padding: 14px;
+    background: rgba(255,255,255,0.8);
+    border: 2px solid #9fa6a0;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    font-size: 16px;
+    color: #000;
+  }
+
+  /* ===== Fade Animation ===== */
+  .fade-out {
+    animation: fadeOut 0.5s forwards;
+  }
+  @keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+  }
+
+  /* ===== Responsive ===== */
+  @media(max-width: 600px) {
+    .container { padding: 18px; }
+    h1 { font-size: 30px; }
+    h2 { font-size: 22px; }
+    p, label { font-size: 15px; }
+    input, select, textarea { width: 100%; margin-left: 0; }
+  }
+</style>
+
   <body>
   <!-- Progress Bar -->
   <div class="container">
@@ -131,177 +335,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PAREAi | Customize</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background: #000;
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 38px;
-      color: #c1a875;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 18px;
-      color: #9fa6a0;
-      margin-bottom: 30px;
-    }
-
-    /* ===== Progress Bar ===== */
-    .progress-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-      color: #9fa6a0;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-
-    .progress-labels span.active {
-      color: #c1a875;
-      font-weight: 600;
-    }
-
-    .progress {
-      background: rgba(255,255,255,0.05);
-      border-radius: 20px;
-      height: 12px;
-      overflow: hidden;
-      margin-bottom: 40px;
-    }
-
-    .progress-fill {
-      background: #c1a875;
-      height: 100%;
-      width: 66%;
-      box-shadow: 0 0 10px #c1a875;
-      transition: width 0.3s ease;
-    }
-
-    /* ===== Cards ===== */
-    details {
-      background: rgba(255,255,255,0.05);
-      border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 25px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(193,168,117,0.4);
-      box-shadow: 0 0 10px rgba(193,168,117,0.25);
-      transition: all 0.3s ease;
-    }
-
-    details[open] {
-      box-shadow: 0 0 14px rgba(193,168,117,0.5);
-    }
-
-    summary {
-      cursor: pointer;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px;
-      color: #fff;
-      outline: none;
-    }
-
-    label {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      color: #c1a875;
-      display: block;
-      margin-bottom: 6px;
-      margin-top: 12px;
-    }
-
-    /* ===== Inputs ===== */
-    input, select, textarea {
-      width: 92%;
-      margin-left: 4%;
-      padding: 14px;
-      border: 1px solid rgba(193,168,117,0.4);
-      border-radius: 8px;
-      background: rgba(255,255,255,0.05);
-      color: #fff;
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
-
-    textarea { min-height: 80px; }
-
-    input[type="checkbox"] {
-      accent-color: #c1a875;
-      width: 20px;
-      height: 20px;
-      margin-right: 8px;
-      filter: drop-shadow(0 0 4px #c1a875);
-      vertical-align: middle;
-      transform: translateY(-2px);
-    }
-
-    /* ===== Buttons ===== */
-    button {
-      background: #c1a875;
-      color: #000;
-      padding: 16px;
-      border: none;
-      border-radius: 10px;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      width: 100%;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background: #000;
-      color: #c1a875;
-      border: 1px solid #c1a875;
-      transform: translateY(-2px);
-      box-shadow: 0 0 15px rgba(193,168,117,0.6);
-    }
-
-    .note {
-      text-align: center;
-      font-size: 14px;
-      color: #9fa6a0;
-      margin-top: 8px;
-    }
-
-    .phone-group {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-    }
-
-    .prefix {
-  padding: 14px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(193,168,117,0.4);
-  border-right: none;
-  border-radius: 8px 0 0 8px;
-  font-size: 16px;
-  color: #fff;
-    }
-
-    @media(max-width: 600px) {
-      h1 { font-size: 30px; }
-      p { font-size: 16px; }
-      details { padding: 14px; }
-      label { font-size: 16px; }
-      input, select, textarea { width: 100%; margin-left: 0; }
-    }
-  </style>
 </head>
 <section id="customizationSection" class="container" style="display:block;">
 <body>
@@ -526,153 +559,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Review & Confirm | AI Hostess</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      font-family: 'Montserrat', sans-serif;
-      color: #2d2d2d;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 2rem auto;
-      background: #fff;
-      border: 2px solid #9fa6a0;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.06);
-    }
-
-    /* Progress Bar */
-    .progress {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
-      color: #9fa6a0;
-      margin-bottom: 2rem;
-      padding-top: 1rem;
-    }
-
-    .progress div {
-      flex: 1;
-      height: 6px;
-      background: #9fa6a0;
-      margin: 0 10px;
-      border-radius: 3px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .progress div::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #c1a875;
-      animation: fill 0.8s ease forwards;
-    }
-
-    @keyframes fill {
-      from { width: 66%; }
-      to { width: 100%; }
-    }
-
-    /* Subcards */
-    .subcard {
-      background: #fff;
-      border: 2px solid #9fa6a0;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      color: #47584e;
-      font-size: 36px;
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      color: #47584e;
-      font-size: 26px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
-
-    p {
-      margin: 5px 0;
-      font-size: 16px;
-      color: #2d2d2d;
-    }
-
-    .check {
-      color: #c1a875;
-      margin-right: 8px;
-    }
-
-    /* Buttons */
-    button {
-      width: 100%;
-      background: #9fa6a0;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 18px;
-      font-size: 22px;
-      font-family: 'Bebas Neue', sans-serif;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #000;
-      color: #9fa6a0;
-      border: 2px solid #9fa6a0;
-    }
-
-    .spinner {
-      display: none;
-      margin-left: 10px;
-      border: 2px solid #fff;
-      border-top: 2px solid transparent;
-      border-radius: 50%;
-      width: 18px;
-      height: 18px;
-      animation: spin 0.6s linear infinite;
-      vertical-align: middle;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .fade-out {
-      animation: fadeOut 0.5s forwards;
-    }
-
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
-    }
-
-    @media(max-width: 768px) {
-      .container { padding: 15px; }
-      h1 { font-size: 30px; }
-      h2 { font-size: 22px; }
-      p { font-size: 15px; }
-      button { font-size: 20px; }
-    }
-  </style>
 </head>
 
 <body>
