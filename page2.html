@@ -335,7 +335,44 @@
       `;
       container.appendChild(faqBlock);
     });
-  </script>
+
+  const form = document.getElementById('customForm');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    formData.forEach((value, key) => {
+      if (sessionStorage.getItem(key)) {
+        const existing = JSON.parse(sessionStorage.getItem(key));
+        if (Array.isArray(existing)) {
+          existing.push(value);
+          sessionStorage.setItem(key, JSON.stringify(existing));
+        } else {
+          sessionStorage.setItem(key, JSON.stringify([existing, value]));
+        }
+      } else {
+        sessionStorage.setItem(key, JSON.stringify(value));
+      }
+    });
+
+    // Normalize checkboxes → true/false
+    form.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      sessionStorage.setItem(cb.name, JSON.stringify(cb.checked));
+    });
+
+    // Move to review section
+    const current = document.querySelector('.container');
+    const next = document.getElementById('reviewSection');
+    if (current && next) {
+      current.style.display = 'none';
+      next.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      console.log('Review section not found — ensure IDs are correct.');
+    }
+  });
+</script>
 </body>
 </html>
 
