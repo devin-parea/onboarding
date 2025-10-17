@@ -179,74 +179,102 @@
     <h1>✨ Let’s get your Hostess live today.</h1>
     <p class="subtitle"><em>Just a few basics and you’re ready.</em></p>
 
-    <form id="essentialsForm">
-<label class="checkbox-wrap">
-  <input type="checkbox" name="readyCheck">
-  <span class="custom-box"></span>
-  I’m ready to set up my Hostess today.
-</label>
+    <section id="essentialsSection" style="max-width:700px; margin:0 auto; font-family:'Montserrat',sans-serif; color:#2d2d2d; padding:20px;">
+  <h1 style="font-family:'Bebas Neue',sans-serif; color:#47584e; font-size:36px; margin-bottom:10px;">✨ Let’s get your Hostess live today.</h1>
+  <p style="margin-bottom:30px; font-size:20px;"><em>Just a few basics and you’re ready.</em></p>
 
-      <label>Choose Your Tier</label>
-      <select name="tier" id="tierDropdown" required>
-        <option value="" disabled selected>Select a plan...</option>
-        <option value="core">Core</option>
-        <option value="confirmation">Confirmation Suite</option>
-        <option value="enterprise">Enterprise</option>
-      </select>
+  <form id="essentialsForm">
+    <!-- Hidden carryover fields -->
+    <input type="hidden" name="phoneNumber" id="essentialsPhoneHidden" value="">
+    <input type="hidden" name="tierSelected" id="essentialsTierHidden" value="">
 
-      <label>Restaurant Name</label>
-      <input type="text" name="restaurantName" placeholder="e.g., Bella Italia" required>
+    <!-- Soft Commit -->
+    <label style="display:flex; align-items:center; gap:12px; margin-bottom:25px; font-size:20px;">
+      <input type="checkbox" id="readyCheck" style="width:22px; height:22px; accent-color:#c1a875;">
+      I’m ready to set up my AI Hostess today.
+    </label>
 
-      <label>Primary Contact Name</label>
-      <input type="text" name="contactName" placeholder="e.g., Sarah Johnson" required>
+    <!-- Tier Dropdown -->
+    <label style="font-family:'Bebas Neue',sans-serif; color:#c1a875; display:block; margin-bottom:8px; font-size:20px;">Choose Your Tier</label>
+    <select name="tier" id="tierDropdown" required style="width:96%; padding:14px; border:2px solid #c1a875; border-radius:6px; font-size:20px; margin-bottom:25px;">
+      <option value="" disabled selected>Select a plan...</option>
+      <option value="core">Core</option>
+      <option value="confirmation">Confirmation Suite</option>
+      <option value="enterprise">Enterprise</option>
+    </select>
 
-      <label>Contact Email</label>
-      <input type="email" name="contactEmail" placeholder="e.g., sarah@bellaitalia.com" required>
+    <!-- Restaurant Name -->
+    <label style="font-family:'Bebas Neue',sans-serif; color:#c1a875; font-size:20px;">Restaurant Name</label>
+    <input type="text" name="restaurantName" placeholder="e.g., Bella Italia" required style="width:96%; padding:14px; border:2px solid #c1a875; border-radius:6px; margin-bottom:25px; font-size:20px;">
 
-      <label>Phone Number</label>
-      <div style="display:flex;">
-        <span style="padding:12px;background:rgba(255,255,255,0.05);border:1.5px solid var(--gold);border-right:none;border-radius:8px 0 0 8px;">+1</span>
-        <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="5551234567" required style="border-radius:0 8px 8px 0;">
-      </div>
+    <!-- Primary Contact Name -->
+    <label style="font-family:'Bebas Neue',sans-serif; color:#c1a875; font-size:20px;">Primary Contact Name</label>
+    <input type="text" name="contactName" placeholder="e.g., Sarah Johnson" required style="width:96%; padding:14px; border:2px solid #c1a875; border-radius:6px; margin-bottom:25px; font-size:20px;">
 
-      <label>Preferred Contact Method</label>
-      <select name="contactMethod" required>
-        <option value="email">Email</option>
-        <option value="sms">SMS</option>
-      </select>
+    <!-- Contact Email -->
+    <label style="font-family:'Bebas Neue',sans-serif; color:#c1a875; font-size:20px;">Contact Email Address</label>
+    <input type="email" name="contactEmail" placeholder="e.g., sarah@bellaitalia.com" required style="width:96%; padding:14px; border:2px solid #c1a875; border-radius:6px; margin-bottom:25px; font-size:20px;">
 
-      <label>Physical Address</label>
-      <input type="text" name="street" placeholder="Street Address" required>
-      <input type="text" name="city" placeholder="City" required>
-      <select name="state" required>
-        <option value="" disabled selected>Select your state...</option>
-        <!-- STATES HERE -->
-      </select>
-      <input type="text" name="zip" placeholder="Zip Code" required>
+    <!-- Phone Number -->
+    <label style="font-family:'Bebas Neue',sans-serif; color:#c1a875; font-size:20px;">Phone Number</label>
+    <div style="display:flex; margin-bottom:25px;">
+      <span style="padding:14px; background:#f6f6f6; border:2px solid #c1a875; border-right:none; border-radius:6px 0 0 6px; font-size:20px;">+1</span>
+      <input type="tel" name="phoneNumber" id="essentialsPhoneInput" placeholder="5551234567" required style="flex:1; padding:14px; border:2px solid #c1a875; border-radius:0 6px 6px 0; font-size:20px;">
+    </div>
 
-      <button type="submit" class="btn">Continue →</button>
-    </form>
-  </div>
+    <!-- Preferred Contact Method -->
+    <label style="font-family:'Bebas Neue',sans-serif; color:#c1a875; font-size:20px;">Preferred Contact Method</label>
+    <select name="contactMethod" required style="width:96%; padding:14px; border:2px solid #c1a875; border-radius:6px; font-size:20px; margin-bottom:25px;">
+      <option value="email">Email</option>
+      <option value="sms">SMS</option>
+    </select>
 
-  <script>
-    const formData = { essentials: {} };
+    <!-- Address -->
+    <label style="font-family:'Bebas Neue',sans-serif; color:#c1a875; font-size:20px;">Physical Address</label>
+    <input type="text" name="street" placeholder="Street Address" required style="width:96%; padding:14px; border:2px solid #c1a875; border-radius:6px; margin-bottom:20px; font-size:20px;">
+    <input type="text" name="city" placeholder="City" required style="width:96%; padding:14px; border:2px solid #c1a875; border-radius:6px; margin-bottom:20px; font-size:20px;">
+    <select name="state" required style="width:96%; padding:14px; border:2px solid #c1a875; border-radius:6px; margin-bottom:20px; font-size:20px;">
+      <option value="" disabled selected>State</option>
+      <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option>
+      <option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+      <option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option>
+      <option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+      <option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+    </select>
+    <input type="text" name="zip" placeholder="Zip Code" required style="width:96%; padding:14px; border:2px solid #c1a875; border-radius:6px; margin-bottom:25px; font-size:20px;">
 
-    document.getElementById('essentialsForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const data = {};
-      [...form.elements].forEach(el => {
-        if (el.name) {
-          if (el.type === 'checkbox') data[el.name] = el.checked;
-          else data[el.name] = el.value;
-        }
-      });
-      formData.essentials = data;
-      console.log('Step 1 collected:', formData);
-      alert('Essentials captured. Proceed to Step 2.');
+    <!-- SMS Consent -->
+    <label style="display:flex; align-items:flex-start; gap:12px; margin-bottom:25px; font-size:16px; line-height:1.4;">
+      <input type="checkbox" name="smsConsent" required style="width:22px; height:22px; accent-color:#c1a875; margin-top:4px;">
+      I agree to receive SMS updates about my reservations. Msg & data rates may apply. Reply STOP to opt out.
+    </label>
+
+    <!-- Submit -->
+    <button id="essentialsSubmit" type="submit" style="width:100%; background:#c1a875; color:#fff; padding:18px; border:none; border-radius:8px; font-size:22px; font-family:'Bebas Neue',sans-serif; cursor:pointer; margin-bottom:10px;">
+      Customize Your Hostess →
+    </button>
+    <p style="text-align:center; font-size:14px; color:#47584e;">(You can skip customization – you're already live!)</p>
+  </form>
+</section>
+
+<script>
+  const essentialsForm = document.getElementById('essentialsForm');
+
+  essentialsForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(essentialsForm);
+    formData.forEach((value, key) => {
+      sessionStorage.setItem(key, value);
     });
-  </script>
 
+    essentialsForm.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      sessionStorage.setItem(cb.name, cb.checked);
+    });
+
+    document.getElementById('essentialsSection').style.display = 'none';
+    document.getElementById('customizationSection').style.display = 'block';
+  });
+</script>   
 </body>
 </html>
-
