@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PAREAi | Customize</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 38px;
+      color: #c1a875;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #9fa6a0;
+      margin-bottom: 30px;
+    }
+
+    /* ===== Progress Bar ===== */
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #9fa6a0;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .progress-labels span.active {
+      color: #c1a875;
+      font-weight: 600;
+    }
+
+    .progress {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      height: 12px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .progress-fill {
+      background: #c1a875;
+      height: 100%;
+      width: 66%;
+      box-shadow: 0 0 10px #c1a875;
+      transition: width 0.3s ease;
+    }
+
+    /* ===== Cards ===== */
+    details {
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 25px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(193,168,117,0.4);
+      box-shadow: 0 0 10px rgba(193,168,117,0.25);
+      transition: all 0.3s ease;
+    }
+
+    details[open] {
+      box-shadow: 0 0 14px rgba(193,168,117,0.5);
+    }
+
+    summary {
+      cursor: pointer;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      color: #fff;
+      outline: none;
+    }
+
+    label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      color: #c1a875;
+      display: block;
+      margin-bottom: 6px;
+      margin-top: 12px;
+    }
+
+    /* ===== Inputs ===== */
+    input, select, textarea {
+      width: 92%;
+      margin-left: 4%;
+      padding: 14px;
+      border: 1px solid rgba(193,168,117,0.4);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    textarea { min-height: 80px; }
+
+    input[type="checkbox"] {
+      accent-color: #c1a875;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      filter: drop-shadow(0 0 4px #c1a875);
+      vertical-align: middle;
+      transform: translateY(-2px);
+    }
+
+    /* ===== Buttons ===== */
+    button {
+      background: #c1a875;
+      color: #000;
+      padding: 16px;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      width: 100%;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #000;
+      color: #c1a875;
+      border: 1px solid #c1a875;
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(193,168,117,0.6);
+    }
+
+    .note {
+      text-align: center;
+      font-size: 14px;
+      color: #9fa6a0;
+      margin-top: 8px;
+    }
+
+    @media(max-width: 600px) {
+      h1 { font-size: 30px; }
+      p { font-size: 16px; }
+      details { padding: 14px; }
+      label { font-size: 16px; }
+      input, select, textarea { width: 100%; margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="progress-labels">
+      <span>ESSENTIALS</span>
+      <span class="active">CUSTOMIZE</span>
+      <span>REVIEW</span>
+    </div>
+    <div class="progress"><div class="progress-fill"></div></div>
+
+    <h1>⚙️ Build Your Own Hostess</h1>
+    <p>Already live. Want to customize her? Dive in below (or skip).</p>
+
+    <form id="customForm">
+
+      <!-- RESERVATIONS -->
+      <details open>
+        <summary>Reservations</summary>
+        <label>Accept Reservations?</label>
+        <select name="acceptReservations">
+          <option value="" disabled selected>Select one...</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+
+        <label>If No → Waitlist Handling</label>
+        <select name="waitlistHandling">
+          <option value="" disabled selected>Select one...</option>
+          <option>Tell guests walk-in only</option>
+          <option>Quote wait time</option>
+          <option>Direct to host stand</option>
+        </select>
+
+        <label>Max Party Size</label>
+        <select name="maxPartySize">
+          <option value="" disabled selected>Select one...</option>
+          <option>1</option><option>2</option><option>3</option><option>4</option>
+          <option>5</option><option>6</option><option>7</option><option>8</option>
+          <option>9</option><option>10</option><option>11</option><option>12</option>
+          <option>13</option><option>14</option><option>15</option><option>16</option>
+          <option>17</option><option>18</option><option>19</option><option>20</option>
+        </select>
+
+        <label>Cutoff Time</label>
+        <select name="cutoffTime">
+          <option value="" disabled selected>Select cutoff time...</option>
+          <option>Up to open</option>
+          <option>X hours before</option>
+          <option>Same-day only</option>
+        </select>
+
+        <label>Notes</label>
+        <textarea name="reservationNotes"></textarea>
+      </details>
+
+      <!-- HOURS -->
+      <details>
+        <summary>Business Hours</summary>
+        <div>
+          <div><label>Monday:</label> <input type="time" name="monOpen"> – <input type="time" name="monClose"> <label><input type="checkbox" name="monClosed"> Closed</label></div>
+          <div><label>Tuesday:</label> <input type="time" name="tueOpen"> – <input type="time" name="tueClose"> <label><input type="checkbox" name="tueClosed"> Closed</label></div>
+          <div><label>Wednesday:</label> <input type="time" name="wedOpen"> – <input type="time" name="wedClose"> <label><input type="checkbox" name="wedClosed"> Closed</label></div>
+          <div><label>Thursday:</label> <input type="time" name="thuOpen"> – <input type="time" name="thuClose"> <label><input type="checkbox" name="thuClosed"> Closed</label></div>
+          <div><label>Friday:</label> <input type="time" name="friOpen"> – <input type="time" name="friClose"> <label><input type="checkbox" name="friClosed"> Closed</label></div>
+          <div><label>Saturday:</label> <input type="time" name="satOpen"> – <input type="time" name="satClose"> <label><input type="checkbox" name="satClosed"> Closed</label></div>
+          <div><label>Sunday:</label> <input type="time" name="sunOpen"> – <input type="time" name="sunClose"> <label><input type="checkbox" name="sunClosed"> Closed</label></div>
+          <button type="button" onclick="applyToAll()">Apply to All Days</button>
+        </div>
+      </details>
+
+      <!-- MENU HIGHLIGHTS -->
+      <details>
+        <summary>Menu Highlights</summary>
+        <label>Available Options:</label>
+        <div style="display:flex; flex-wrap:wrap; gap:20px; align-items:center;">
+          <label><input type="checkbox" name="veg">Vegetarian</label>
+          <label><input type="checkbox" name="vegan">Vegan</label>
+          <label><input type="checkbox" name="pesc">Pescatarian</label>
+          <label><input type="checkbox" name="kids">Kids Menu</label>
+          <label><input type="checkbox" name="glutenFree">Gluten-Free</label>
+          <label><input type="checkbox" name="celiac">Celiac-safe</label>
+        </div>
+
+        <label>Specials</label>
+        <input type="text" name="specials" placeholder="e.g., Happy Hour 4–6pm">
+
+        <label>Highlighted Dishes</label>
+        <textarea name="highlightedDishes"></textarea>
+      </details>
+
+      <!-- FAQS -->
+      <details>
+        <summary>FAQs & Rules</summary>
+        <label>Parking</label>
+        <select name="parking">
+          <option value="" disabled selected>Select one...</option>
+          <option>Valet</option><option>Garage</option><option>Lot</option><option>Street</option><option>None</option>
+        </select>
+
+        <label>Corkage</label>
+        <select name="corkage">
+          <option value="" disabled selected>Select one...</option>
+          <option>Yes, with fee</option><option>Yes, free</option><option>No</option>
+        </select>
+
+        <label>Dress Code</label>
+        <select name="dressCode">
+          <option value="" disabled selected>Select one...</option>
+          <option>Casual</option><option>Business Casual</option><option>Formal</option><option>None</option>
+        </select>
+
+        <label>Birthdays</label>
+        <select name="birthdays">
+          <option value="" disabled selected>Select one...</option>
+          <option>Cake fee</option><option>BYO free</option><option>Not allowed</option>
+        </select>
+
+        <label>Location Notes</label>
+        <textarea name="locationNotes"></textarea>
+
+        <div id="faqContainer">
+          <label>Custom FAQ Type</label>
+          <input type="text" name="faqType[]" placeholder="e.g., Pets">
+          <label>Custom FAQ Description</label>
+          <textarea name="faqDesc[]" placeholder="e.g., Only service animals allowed."></textarea>
+        </div>
+        <button type="button" id="addFaqBtn">Add Another</button>
+      </details>
+
+      <!-- GUEST COMMS -->
+      <details>
+        <summary>Guest Communication</summary>
+        <label>Confirmations</label>
+        <select name="confirmations"><option>SMS</option></select>
+
+        <label>Fallback Contact (Phone)</label>
+        <div style="display:flex;">
+          <span style="padding:14px; background:rgba(255,255,255,0.05); border:1px solid rgba(193,168,117,0.4); border-right:none; border-radius:6px 0 0 6px; color:#9fa6a0;">+1</span>
+          <input type="tel" name="fallbackPhone" placeholder="5551234567" style="flex:1;">
+        </div>
+
+        <label>Fallback Contact (Email)</label>
+        <input type="email" name="fallbackEmail" placeholder="email@example.com">
+      </details>
+
+      <!-- FINAL CTA -->
+      <button type="submit">Next → Review</button>
+      <p class="note"><strong>Skip all this if you want — she’ll still answer every call.</strong></p>
+    </form>
+  </div>
+
+  <script>
+    function applyToAll() {
+      const open = document.querySelector('input[name="monOpen"]').value;
+      const close = document.querySelector('input[name="monClose"]').value;
+      const closed = document.querySelector('input[name="monClosed"]').checked;
+      const days = ['tue','wed','thu','fri','sat','sun'];
+      days.forEach(day => {
+        document.querySelector(`input[name="${day}Open"]`).value = open;
+        document.querySelector(`input[name="${day}Close"]`).value = close;
+        document.querySelector(`input[name="${day}Closed"]`).checked = closed;
+      });
+    }
+
+    document.getElementById('addFaqBtn').addEventListener('click', () => {
+      const container = document.getElementById('faqContainer');
+      const faqBlock = document.createElement('div');
+      faqBlock.innerHTML = `
+        <label>Custom FAQ Type</label>
+        <input type="text" name="faqType[]" placeholder="e.g., Pets">
+        <label>Custom FAQ Description</label>
+        <textarea name="faqDesc[]" placeholder="e.g., Only service animals allowed."></textarea>
+      `;
+      container.appendChild(faqBlock);
+    });
+  </script>
+</body>
+</html>
+
