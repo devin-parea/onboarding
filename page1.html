@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAREAi Onboarding — Step 1</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600&display=swap');
+    :root {
+      --black: #000000;
+      --gold: #c1a875;
+      --gray: #9fa6a0;
+      --white: #f6f5f3;
+    }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .progressbar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .step-labels {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 700px;
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--gray);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .progress-container {
+      width: 90%;
+      max-width: 700px;
+      height: 6px;
+      background: rgba(159,166,160,0.2);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      width: 33%;
+      height: 100%;
+      background: linear-gradient(90deg, #c1a875, #f6f5f3);
+      transition: width 0.5s ease;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 700px;
+      margin-top: 40px;
+      background: rgba(45,45,45,0.6);
+      border: 1px solid rgba(193,168,117,0.4);
+      border-radius: 18px;
+      box-shadow: 0 0 45px rgba(193,168,117,0.25); /* heavier glow */
+      padding: 25px 30px; /* tighter inner padding */
+      backdrop-filter: blur(10px);
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform: translateY(10px);}
+      to {opacity:1; transform: translateY(0);}
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--gold);
+      font-size: 2.4rem;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    p.subtitle {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    label {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--gold);
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+      margin-top: 14px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1.5px solid var(--gold);
+      border-radius: 8px;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.05);
+      color: var(--white);
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--white);
+      box-shadow: 0 0 6px var(--gold);
+    }
+
+.checkbox-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.checkbox-wrap input[type="checkbox"] {
+  display: none;
+}
+
+.custom-box {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.checkbox-wrap input:checked + .custom-box {
+  background-color: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+}
+
+    .btn {
+      width: 100%;
+      background: var(--gold);
+      color: var(--black);
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin-top: 25px;
+    }
+
+    .btn:hover {
+      background: var(--black);
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div class="progressbar">
+    <div class="step-labels">
+      <span>Essentials</span>
+      <span>Customize</span>
+      <span>Review</span>
+    </div>
+    <div class="progress-container"><div class="progress-fill"></div></div>
+  </div>
+
+  <div class="container" id="essentialsSection">
+    <h1>✨ Let’s get your Hostess live today.</h1>
+    <p class="subtitle"><em>Just a few basics and you’re ready.</em></p>
+
+    <form id="essentialsForm">
+<label class="checkbox-wrap">
+  <input type="checkbox" name="readyCheck">
+  <span class="custom-box"></span>
+  I’m ready to set up my Hostess today.
+</label>
+
+      <label>Choose Your Tier</label>
+      <select name="tier" id="tierDropdown" required>
+        <option value="" disabled selected>Select a plan...</option>
+        <option value="core">Core</option>
+        <option value="confirmation">Confirmation Suite</option>
+        <option value="enterprise">Enterprise</option>
+      </select>
+
+      <label>Restaurant Name</label>
+      <input type="text" name="restaurantName" placeholder="e.g., Bella Italia" required>
+
+      <label>Primary Contact Name</label>
+      <input type="text" name="contactName" placeholder="e.g., Sarah Johnson" required>
+
+      <label>Contact Email</label>
+      <input type="email" name="contactEmail" placeholder="e.g., sarah@bellaitalia.com" required>
+
+      <label>Phone Number</label>
+      <div style="display:flex;">
+        <span style="padding:12px;background:rgba(255,255,255,0.05);border:1.5px solid var(--gold);border-right:none;border-radius:8px 0 0 8px;">+1</span>
+        <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="5551234567" required style="border-radius:0 8px 8px 0;">
+      </div>
+
+      <label>Preferred Contact Method</label>
+      <select name="contactMethod" required>
+        <option value="email">Email</option>
+        <option value="sms">SMS</option>
+      </select>
+
+      <label>Physical Address</label>
+      <input type="text" name="street" placeholder="Street Address" required>
+      <input type="text" name="city" placeholder="City" required>
+      <select name="state" required>
+        <option value="" disabled selected>Select your state...</option>
+        <!-- STATES HERE -->
+      </select>
+      <input type="text" name="zip" placeholder="Zip Code" required>
+
+      <button type="submit" class="btn">Continue →</button>
+    </form>
+  </div>
+
+  <script>
+    const formData = { essentials: {} };
+
+    document.getElementById('essentialsForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {};
+      [...form.elements].forEach(el => {
+        if (el.name) {
+          if (el.type === 'checkbox') data[el.name] = el.checked;
+          else data[el.name] = el.value;
+        }
+      });
+      formData.essentials = data;
+      console.log('Step 1 collected:', formData);
+      alert('Essentials captured. Proceed to Step 2.');
+    });
+  </script>
+
+</body>
+</html>
+
